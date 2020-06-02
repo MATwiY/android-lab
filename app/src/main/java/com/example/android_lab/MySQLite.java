@@ -47,7 +47,7 @@ public class MySQLite extends SQLiteOpenHelper {
 
     public void usun(String id){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("animals", " id = ?", new String[] { id });
+        db.delete("animals", "_id = ?", new String[] { id });
         db.close();
     }
 
@@ -60,7 +60,7 @@ public class MySQLite extends SQLiteOpenHelper {
         values.put("wielkosc", zwierz.getWielkosc());
         values.put("opis", zwierz.getOpis());
 
-        int i = db.update("animals", values, " id = ?", new String[] {String.valueOf(zwierz.get_id())});
+        int i = db.update("animals", values, "_id = ?", new String[] {String.valueOf(zwierz.get_id())});
         db.close();
 
         return i;
@@ -70,7 +70,7 @@ public class MySQLite extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.query("animals",
-                new String[]{"_id", "gatunek", "kolor", "wielkosc", "opis"}, "id = ?",
+                new String[]{"_id", "gatunek", "kolor", "wielkosc", "opis"}, "_id = ?",
                 new String[]{String.valueOf(id)},
                 null,
                 null,

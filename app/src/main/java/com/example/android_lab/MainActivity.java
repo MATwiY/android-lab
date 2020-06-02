@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 import java.sql.Array;
 import java.util.ArrayList;
@@ -50,6 +54,19 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(this.adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView name = (TextView)view.findViewById(android.R.id.text1);
+
+                Animal zwierz = db.pobierz(Integer.parseInt(name.getText().toString()));
+                Log.e("E", zwierz.getGatunek());
+                Intent intent = new Intent(getApplicationContext(), DodajWpis.class);
+                intent.putExtra("element", zwierz);
+                startActivityForResult(intent, 2);
+            }
+        });
     }
 
     @Override
@@ -80,6 +97,15 @@ public class MainActivity extends AppCompatActivity {
             /*String nowy = (String) extras.get("wpis");
             target.add(nowy);
             adapter.notifyDataSetChanged();*/
+        }
+        if(requestCode == 2 && resultCode == RESULT_OK){
+
+            Bundle extras = data.getExtras();
+            assert extras != null;
+            Animal edit = (Animal)extras.getSerializable("nowy");
+            this.db.aktualizuj(edit);
+            adapter.changeCursor(db.lista());
+            adapter.notifyDataSetChanged();
         }
     }
 }
