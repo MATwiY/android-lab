@@ -6,28 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".DodajWpis">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
+
+    <Spinner
+        android:id="@+id/gatunek"
+        android:layout_width="120dp"
+        android:layout_height="42dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        app:layout_constraintBottom_toTopOf="@+id/kolor"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.749"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.435" />
+
+    <EditText
+        android:id="@+id/kolor"
+        android:layout_width="319dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="104dp"
+        android:ems="10"
+        android:hint="Kolor"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.641"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        android:onClick="wyslij"
+    <EditText
+        android:id="@+id/opis"
+        android:layout_width="312dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="40dp"
+        android:hint="opis"
+        android:inputType="textMultiLine"
+        android:lines="6"
+        android:minLines="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintVertical_bias="0.174" />
+        app:layout_constraintTop_toBottomOf="@+id/wielkosc"
+        app:layout_constraintVertical_bias="0.005" />
+
+    <EditText
+        android:id="@+id/wielkosc"
+        android:layout_width="319dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="wielkosc"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.641"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kolor"
+        app:layout_constraintVertical_bias="0.004" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="265dp"
+        android:layout_height="63dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|center"
+        android:onClick="wyslij"
+        android:text="Dodaj"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opis"
+        app:layout_constraintVertical_bias="0.526" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
